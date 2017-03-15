@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="../three.js-master/build/three.min.js"></script>
+</head>
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+</body>
+<script>
+  function init(){
+    var renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById('mainCanvas')
+    });
+
+    renderer.setClearColor(0x000000);
+
+    var scene = new THREE.Scene();
+    /*var camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+    camera.position.set(5, 5, 5);*/
+
+    var camera = new THREE.PerspectiveCamera(45, 400/300, 1, 10);
+    camera.position.set(2, 2, 3);
+    camera.lookAt(new THREE.Vector3(0,0,0));
+    scene.add(camera);
+
+
+
+    var wheel1 = new THREE.Mesh(new THREE.TorusGeometry(0.2,0.08,8,20),
+      new THREE.MeshBasicMaterial({
+        color:'#F6F5F5'
+      })
+    );
+    wheel1.position.set(-1,-0.5,0.5);
+    scene.add(wheel1);
+
+    var wheel2 = new THREE.Mesh(new THREE.TorusGeometry(0.2,0.08,8,20),
+      new THREE.MeshBasicMaterial({
+        color:'#F6F5F5'
+      })
+    );
+    wheel2.position.set(1,-0.5,0.5);
+    scene.add(wheel2);
+
+    var wheel3 = new THREE.Mesh(new THREE.TorusGeometry(0.2,0.08,8,20),
+      new THREE.MeshBasicMaterial({
+        color:'#F6F5F5'
+      })
+    );
+    wheel3.position.set(1,-0.5,-0.5);
+    scene.add(wheel3);
+
+    var wheel4 = new THREE.Mesh(new THREE.TorusGeometry(0.2,0.08,8,20),
+      new THREE.MeshBasicMaterial({
+        color:'#F6F5F5'
+      })
+    );
+    wheel4.position.set(-1,-0.5,-0.5);
+    scene.add(wheel4);
+
+    var cube = new THREE.Mesh(new THREE.CubeGeometry(3,1,1),
+      new THREE.MeshBasicMaterial({
+        color: '#E3E3E3',
+        wireframe: false
+      })
+    );
+    scene.add(cube);
+    renderer.render(scene, camera);
+  }
+</script>
+</html>
